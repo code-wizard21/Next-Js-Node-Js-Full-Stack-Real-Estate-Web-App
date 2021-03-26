@@ -7,6 +7,7 @@ import errorHandler from "./middlewares/error.js";
 // import Routes here;
 import users from "./routes/users.js";
 import auth from "./routes/auth.js";
+import properties from "./routes/properties.js";
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ app.use(cors());
 // use Routes;
 app.use("/api/users", users);
 app.use("/api/auth", auth);
+app.use("/api/properties", properties);
 
 app.use(errorHandler);
 

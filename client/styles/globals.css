@@ -1,0 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+@media screen and (min-width: 1280px) {
+  .MuiContainer-maxWidthLg {
+    max-width: 1600px !important;
+  }
+}

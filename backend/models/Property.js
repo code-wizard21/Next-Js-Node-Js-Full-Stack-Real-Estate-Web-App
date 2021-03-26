@@ -28,12 +28,12 @@ const propertySchema = mongoose.Schema(
     },
     property_type: {
       type: String,
-      enum: ["apartment", "house", "room", "commercial"],
+      enum: ["apartment", "house", "commercial"],
       required: [true, "Property type is required."],
     },
     property_status: {
       type: String,
-      enum: ["For Sale", "For Rent"],
+      enum: ["for sale", "for rent"],
       required: [true, "Property status is required."],
     },
     property_address: {
