@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(2),
     fontSize: ".975rem",
     color: "#ffffff",
-    fontWeight: 600,
+    fontWeight: 500,
     // textTransform: "capitalize",
     textDecoration: "none",
     transition: ".3s",
@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
   },
   titleLink: {
     color: "#ffffff",
-    fontWeight: 600,
+    fontWeight: 500,
     fontSize: "28px",
     textDecoration: "none",
     transition: ".3s",

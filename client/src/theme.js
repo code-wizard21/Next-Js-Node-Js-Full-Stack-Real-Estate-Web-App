@@ -8,7 +8,7 @@ const theme = createMuiTheme({
       main: "#0ec6d5",
     },
     secondary: {
-      main: "#19857b",
+      main: "#eff6f7",
     },
     error: {
       main: red.A400,
@@ -19,7 +19,8 @@ const theme = createMuiTheme({
   },
   typography: {
     fontFamily: [
-      "Nunito Sans",
+      "Poppins",
+      // "Nunito Sans",
       "-apple-system",
       "BlinkMacSystemFont",
       '"Segoe UI"',

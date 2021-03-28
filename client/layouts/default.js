@@ -1,3 +1,4 @@
+import { Container } from "@material-ui/core";
 import Head from "next/head";
 import Navbar from "../components/home/Navbar";
 
@@ -12,7 +13,7 @@ const DefaultLayout = (props) => (
       <meta charSet="utf-8" />
     </Head>
     <Navbar />
-    <main>{props.children}</main>
+    <main style={{ overflowX: "hidden" }}>{props.children}</main>
   </>
 );
 
