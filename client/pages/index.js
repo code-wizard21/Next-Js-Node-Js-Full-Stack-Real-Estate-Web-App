@@ -14,14 +14,10 @@ import {
   RadioGroup,
   FormControlLabel,
   Divider,
-  Card,
-  CardActionArea,
-  CardMedia,
-  CardContent,
-  CardActions,
 } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
+import FeaturedPropertyCard from "../components/home/FeaturedPropertyCard";
 
 const useStyles = makeStyles((theme) => ({
   showCase: {
@@ -102,14 +98,10 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "19px",
     backgroundColor: "#0ec6d5",
   },
-  card: {
-    height: "100%",
-    border: "1px solid #eee",
-    borderRadius: "3px",
-    // display: "flex",
-    // flexDirection: "column",
-    //
-    // cursor: "pointer",
+  // by property section;
+  byPropertySection: {
+    padding: theme.spacing(12),
+    backgroundColor: "#fafafa",
   },
 }));
 
@@ -240,7 +232,7 @@ const Home = () => {
           <Grid container spacing={3} alignItems="center">
             <Grid item xs={6}>
               <Typography
-                style={{ fontSize: "1.5rem", fontWeight: "500" }}
+                style={{ fontSize: "2rem", fontWeight: "500" }}
                 variant="h2"
               >
                 Featured Properties For Sale
@@ -263,83 +255,86 @@ const Home = () => {
           {/* Feautured For Sale Properties */}
           <Grid container spacing={4} style={{ marginTop: "30px" }}>
             <Grid item xs={6} sm={4} md={3}>
-              <Card className={classes.card} elevation={0}>
-                <CardActionArea>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    component="img"
-                    alt="Contemplative Reptile"
-                    height="220"
-                    image="/images/re5.jpg"
-                    title="Property title here"
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Property Title
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      color="textSecondary"
-                      component="p"
-                    >
-                      Lizards are a widespread group of squamate reptiles, with
-                      over 6,000 species, ranging across all continents except
-                      Antarctica
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-                <Divider />
-                <CardActions>
-                  <Button size="small" color="primary">
-                    Share
-                  </Button>
-                  <Button size="small" color="primary">
-                    Learn More
-                  </Button>
-                </CardActions>
-              </Card>
+              <FeaturedPropertyCard />
             </Grid>
             <Grid item xs={6} sm={4} md={3}>
-              <Card className={classes.card} elevation={0}>
-                <CardActionArea>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    component="img"
-                    alt="Contemplative Reptile"
-                    height="220"
-                    image="/images/re6.jpg"
-                    title="Property title here"
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Property Title
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      color="textSecondary"
-                      component="p"
-                    >
-                      Lizards are a widespread group of squamate reptiles, with
-                      over 6,000 species, ranging across all continents except
-                      Antarctica
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-                <Divider />
-                <CardActions>
-                  <Button size="small" color="primary">
-                    Share
-                  </Button>
-                  <Button size="small" color="primary">
-                    Learn More
-                  </Button>
-                </CardActions>
-              </Card>
+              <FeaturedPropertyCard />
+            </Grid>
+            <Grid item xs={6} sm={4} md={3}>
+              <FeaturedPropertyCard />
+            </Grid>
+            <Grid item xs={6} sm={4} md={3}>
+              <FeaturedPropertyCard />
             </Grid>
           </Grid>
         </Container>
       </section>
       {/* Featured For Sale Ends Here */}
+      {/* Explore by property type Starts Here */}
+      <section className={classes.byPropertySection}>
+        <Container maxWidth="lg">
+          <Grid container spacing={2} alignItems="center">
+            <Grid item xs={4} style={{ paddingRight: "100px" }}>
+              <Typography
+                style={{
+                  fontSize: "2rem",
+                  fontWeight: "500",
+                  lineHeight: "1.625",
+                }}
+                variant="h2"
+              >
+                Explore <br /> by Property Type
+              </Typography>
+              <Divider className={classes.typographyDivider} />
+              <Typography
+                component="p"
+                style={{
+                  color: "#696969",
+                  margin: "21px 0",
+                  fontSize: "16px",
+                }}
+              >
+                You can find house, apartment or commercial properties.
+              </Typography>
+              <Button
+                className={classes.seeAllPropertiesButton}
+                style={{ width: "65%" }}
+                variant="contained"
+                color="secondary"
+                size="large"
+                disableElevation
+                endIcon={<ArrowRightAltIcon />}
+              >
+                See all properties
+              </Button>
+            </Grid>
+            <Grid item xs={8}>
+              <Grid container spacing={1}>
+                <Grid item xs={3}>
+                  <div style={{ padding: "50px" }}>
+                    <img
+                      src="/images/living-room.svg"
+                      alt="house"
+                      style={{ width: "50%" }}
+                    />
+                    <Typography component="h4">House</Typography>
+                  </div>
+                </Grid>
+                <Grid item xs={3}>
+                  <Paper>paper1</Paper>
+                </Grid>
+                <Grid item xs={3}>
+                  <Paper>paper1</Paper>
+                </Grid>
+                <Grid item xs={3}>
+                  <Paper>paper1</Paper>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Container>
+      </section>
+      {/* Explore by property type Ends Here */}
     </>
   );
 };
