@@ -7,6 +7,7 @@ import {
   CardActions,
   Typography,
   Divider,
+  Grid,
 } from "@material-ui/core";
 import WeekendOutlinedIcon from "@material-ui/icons/WeekendOutlined";
 import BathtubOutlinedIcon from "@material-ui/icons/BathtubOutlined";
@@ -70,7 +71,7 @@ const FeaturedPropertyCard = () => {
   const classes = useStyles();
 
   return (
-    <>
+    <Grid item xs={6} sm={4} md={3}>
       <Card className={classes.card} elevation={0}>
         <CardActionArea>
           <CardMedia
@@ -78,7 +79,7 @@ const FeaturedPropertyCard = () => {
             component="img"
             alt="Contemplative Reptile"
             height="220"
-            image="/images/re5.jpg"
+            image="/images/re6.jpg"
             title="Property title here"
           />
           <CardContent>
@@ -145,7 +146,7 @@ const FeaturedPropertyCard = () => {
           />
         </CardActions>
       </Card>
-    </>
+    </Grid>
   );
 };
 
