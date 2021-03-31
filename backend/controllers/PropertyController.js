@@ -12,6 +12,7 @@ export const getProperties = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
+    count: properties.length,
     data: properties,
   });
 });
@@ -89,5 +90,47 @@ export const deleteProperty = asyncHandler(async (req, res, next) => {
   res.status(200).json({
     success: true,
     data: {},
+  });
+});
+
+/**
+ * @desc    Get All Featured For Sale Properties
+ * @route   GET /api/properties/featuredforsale
+ * @access  Public
+ */
+export const getFeaturedForSale = asyncHandler(async (req, res, next) => {
+  const featuredForSale = await Property.find({
+    isFeatured: true,
+    // property_status: { $in: ["forsale"] },
+    property_status: "forsale",
+  }).select(
+    "title property_address price rooms bathrooms size garage property_images slug"
+  );
+
+  res.status(200).json({
+    success: true,
+    count: featuredForSale.length,
+    data: featuredForSale,
+  });
+});
+
+/**
+ * @desc    Get All Featured For Rent Properties
+ * @route   GET /api/properties/featuredforrent
+ * @access  Public
+ */
+export const getFeaturedForRent = asyncHandler(async (req, res, next) => {
+  const featuredForRent = await Property.find({
+    isFeatured: true,
+    // property_status: { $in: ["forrent"] },
+    property_status: "forrent",
+  }).select(
+    "title property_address price rooms bathrooms size garage property_images slug"
+  );
+
+  res.status(200).json({
+    success: true,
+    count: featuredForRent.length,
+    data: featuredForRent,
   });
 });

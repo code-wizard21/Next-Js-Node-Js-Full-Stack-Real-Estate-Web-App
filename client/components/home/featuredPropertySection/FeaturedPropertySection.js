@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const FeaturedPropertySection = ({ propertyStatus }) => {
+const FeaturedPropertySection = ({ propertyStatus, featuredProperties }) => {
   const classes = useStyles();
 
   return (
@@ -64,10 +64,10 @@ const FeaturedPropertySection = ({ propertyStatus }) => {
         </Grid>
         {/* Feautured Properties */}
         <Grid container spacing={4} style={{ marginTop: "30px" }}>
-          <FeaturedPropertyCard />
-          <FeaturedPropertyCard />
-          <FeaturedPropertyCard />
-          <FeaturedPropertyCard />
+          {featuredProperties &&
+            featuredProperties.map((property) => (
+              <FeaturedPropertyCard key={property._id} property={property} />
+            ))}
         </Grid>
       </Container>
     </section>

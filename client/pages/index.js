@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import axios from "axios";
 import Link from "next/link";
 import {
   Typography,
@@ -168,7 +169,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Home = () => {
+const Home = ({ featuredForSale, featuredForRent }) => {
   const classes = useStyles();
 
   const [propertyStatus, setPropertyStatus] = useState("");
@@ -291,7 +292,10 @@ const Home = () => {
         </Container>
       </section>
       {/* Featured For Sale Starts Here */}
-      <FeaturedPropertySection propertyStatus="For Sale" />
+      <FeaturedPropertySection
+        propertyStatus="For Sale"
+        featuredProperties={featuredForSale}
+      />
       {/* Featured For Sale Ends Here */}
       {/* Explore by property type Starts Here */}
       <section className={classes.byPropertySection}>
@@ -402,7 +406,10 @@ const Home = () => {
       </section>
       {/* Explore by property type Ends Here */}
       {/* Featured For Rent Starts Here */}
-      <FeaturedPropertySection propertyStatus="For Rent" />
+      <FeaturedPropertySection
+        propertyStatus="For Rent"
+        featuredProperties={featuredForRent}
+      />
       {/* Featured For Rent Ends Here */}
       {/* Contact us section starts here  */}
       <section className={classes.contactUsSection}>
@@ -462,6 +469,29 @@ const Home = () => {
     </>
   );
 };
+
+export async function getStaticProps() {
+  try {
+    const res = await axios.get(
+      `${process.env.baseURL}/properties/featuredforsale`
+    );
+    const featuredForSale = res.data.data;
+
+    const res2 = await axios.get(
+      `${process.env.baseURL}/properties/featuredforrent`
+    );
+    const featuredForRent = res2.data.data;
+
+    return {
+      props: {
+        featuredForSale,
+        featuredForRent,
+      },
+    };
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 Home.layout = "default";
 

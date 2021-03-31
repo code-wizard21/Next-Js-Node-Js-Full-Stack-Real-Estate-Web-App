@@ -1,5 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import {
   AppBar,
   Toolbar,
@@ -74,6 +75,10 @@ const useStyles = makeStyles((theme) => ({
 
 const Navbar = () => {
   const classes = useStyles();
+  const router = useRouter();
+
+  // console.log(router.pathname);
+  // color={router.pathname === "/" ? "transparent" : "primary"}
 
   return (
     <>
@@ -93,7 +98,9 @@ const Navbar = () => {
                 aria-label="menu"
               >
                 {/* <HomeWorkIcon className={classes.logo} /> */}
-                <img src="/images/buildings.svg" alt="logo" width="50" />
+                <Link href="/">
+                  <img src="/images/buildings.svg" alt="logo" width="50" />
+                </Link>
               </IconButton>
               <Typography variant="h6" className={classes.title}>
                 <Link href="/">

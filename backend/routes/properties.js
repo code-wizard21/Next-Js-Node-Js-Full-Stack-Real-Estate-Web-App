@@ -7,6 +7,8 @@ import {
   createProperty,
   updateProperty,
   deleteProperty,
+  getFeaturedForSale,
+  getFeaturedForRent,
 } from "../controllers/PropertyController.js";
 
 import { protect, authorize } from "../middlewares/authMiddleware.js";
@@ -15,6 +17,10 @@ router
   .route("/")
   .get(getProperties)
   .post(protect, authorize("realtor", "admin"), createProperty);
+
+router.route("/featuredforsale").get(getFeaturedForSale);
+router.route("/featuredforrent").get(getFeaturedForRent);
+
 router
   .route("/:id")
   .get(getPropertyById)

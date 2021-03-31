@@ -33,7 +33,7 @@ const propertySchema = mongoose.Schema(
     },
     property_status: {
       type: String,
-      enum: ["for sale", "for rent"],
+      enum: ["forsale", "forrent"],
       required: [true, "Property status is required."],
     },
     property_address: {
@@ -41,7 +41,6 @@ const propertySchema = mongoose.Schema(
       city: { type: String, required: true },
       state: { type: String, required: true },
       zipcode: { type: String, required: true },
-      country: { type: String, required: true },
     },
     property_images: [propertyImagesSchema],
     property_amenities: [propertyAmenitiesSchema],

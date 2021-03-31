@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
+import Link from "next/link";
 import {
   Card,
-  CardActionArea,
   CardMedia,
   CardContent,
   CardActions,
@@ -67,69 +67,74 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const FeaturedPropertyCard = () => {
+const FeaturedPropertyCard = ({ property }) => {
   const classes = useStyles();
+
+  const { title, price, rooms, bathrooms, size, garage, slug } = property;
+  const { address, city } = property.property_address;
 
   return (
     <Grid item xs={6} sm={4} md={3}>
       <Card className={classes.card} elevation={0}>
-        <CardActionArea>
-          <CardMedia
-            className={classes.cardMedia}
-            component="img"
-            alt="Contemplative Reptile"
-            height="220"
-            image="/images/re6.jpg"
-            title="Property title here"
-          />
-          <CardContent>
-            <Typography
-              gutterBottom
-              variant="h5"
-              component="h2"
-              className={classes.propertyTitle}
-            >
-              Affordable Urban House
-            </Typography>
-            <Typography
-              gutterBottom
-              component="p"
-              className={classes.propertyAddress}
-            >
-              1421 San Pedro St, Los Angeles
-            </Typography>
-            <div className={classes.propertyAmetinitiesWrapper}>
-              <span className={classes.propertyAmenitySpan}>
-                <WeekendOutlinedIcon
-                  className={classes.propertyAmenityIcon}
-                  color="primary"
-                />{" "}
-                3 Br
-              </span>
-              <span className={classes.propertyAmenitySpan}>
-                <BathtubOutlinedIcon
-                  className={classes.propertyAmenityIcon}
-                  color="primary"
-                />{" "}
-                2 Ba
-              </span>
-              <span className={classes.propertyAmenitySpan}>
-                <SquareFootOutlinedIcon
-                  className={classes.propertyAmenityIcon}
-                  color="primary"
-                />{" "}
-                260 Sq.Ft
-              </span>
-              <span className={classes.propertyAmenitySpan}>
-                <DirectionsCarOutlinedIcon
-                  className={classes.propertyAmenityIcon}
-                  color="primary"
-                />{" "}
-                1 Gr
-              </span>
-            </div>
-          </CardContent>
-        </CardActionArea>
+        <Link href={`/property/${encodeURIComponent(slug)}`}>
+          <div style={{ cursor: "pointer" }}>
+            <CardMedia
+              className={classes.cardMedia}
+              component="img"
+              alt="Contemplative Reptile"
+              height="220"
+              image="/images/re6.jpg"
+              title={title}
+            />
+            <CardContent>
+              <Typography
+                gutterBottom
+                variant="h5"
+                component="h2"
+                className={classes.propertyTitle}
+              >
+                {title}
+              </Typography>
+              <Typography
+                gutterBottom
+                component="p"
+                className={classes.propertyAddress}
+              >
+                {address + " " + city}
+              </Typography>
+              <div className={classes.propertyAmetinitiesWrapper}>
+                <span className={classes.propertyAmenitySpan}>
+                  <WeekendOutlinedIcon
+                    className={classes.propertyAmenityIcon}
+                    color="primary"
+                  />{" "}
+                  {rooms} Br
+                </span>
+                <span className={classes.propertyAmenitySpan}>
+                  <BathtubOutlinedIcon
+                    className={classes.propertyAmenityIcon}
+                    color="primary"
+                  />{" "}
+                  {bathrooms} Ba
+                </span>
+                <span className={classes.propertyAmenitySpan}>
+                  <SquareFootOutlinedIcon
+                    className={classes.propertyAmenityIcon}
+                    color="primary"
+                  />{" "}
+                  {size} Sq.Ft
+                </span>
+                <span className={classes.propertyAmenitySpan}>
+                  <DirectionsCarOutlinedIcon
+                    className={classes.propertyAmenityIcon}
+                    color="primary"
+                  />{" "}
+                  {garage} Gr
+                </span>
+              </div>
+            </CardContent>
+          </div>
+        </Link>
         <Divider />
         <CardActions className={classes.cardActions}>
           <Typography
@@ -138,7 +143,7 @@ const FeaturedPropertyCard = () => {
             component="h2"
             className={classes.propertyPrice}
           >
-            $1.250.000
+            ${price.toLocaleString()}
           </Typography>
           <FavoriteBorderOutlinedIcon
             color="primary"
