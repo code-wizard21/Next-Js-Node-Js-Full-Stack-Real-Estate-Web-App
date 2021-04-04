@@ -32,6 +32,20 @@ export const getPropertyById = asyncHandler(async (req, res, next) => {
 });
 
 /**
+ * @desc    Get Single Property by Slug
+ * @route   GET /api/properties/getbyslug/:slug
+ * @access  Public
+ */
+export const getPropertyBySlug = asyncHandler(async (req, res, next) => {
+  const property = await Property.findOne({ slug: req.params.slug }).exec();
+
+  res.status(200).json({
+    success: true,
+    data: property,
+  });
+});
+
+/**
  * @desc    Create Property
  * @route   POST /api/properties
  * @access  Private(Only Admin or Realtor)

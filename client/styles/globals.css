@@ -10,4 +10,7 @@
   .MuiContainer-maxWidthLg {
     max-width: 1600px !important;
   }
+  .MuiContainer-maxWidthMd {
+    max-width: 1200px !important;
+  }
 }

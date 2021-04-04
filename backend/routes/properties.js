@@ -4,6 +4,7 @@ const router = express.Router();
 import {
   getProperties,
   getPropertyById,
+  getPropertyBySlug,
   createProperty,
   updateProperty,
   deleteProperty,
@@ -26,5 +27,7 @@ router
   .get(getPropertyById)
   .put(protect, authorize("realtor", "admin"), updateProperty)
   .delete(protect, authorize("realtor", "admin"), deleteProperty);
+
+router.route("/getbyslug/:slug").get(getPropertyBySlug);
 
 export default router;

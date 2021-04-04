@@ -8,11 +8,10 @@ import {
   IconButton,
   Container,
 } from "@material-ui/core";
-import HomeWorkIcon from "@material-ui/icons/HomeWork";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
+    borderBottom: "1px solid #eee",
   },
   menuButton: {
     // marginRight: theme.spacing(2),
@@ -29,6 +28,14 @@ const useStyles = makeStyles((theme) => ({
     padding: "0px",
     minHeight: 100,
     color: "#ffffff",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  toolbarSecondary: {
+    padding: "0px",
+    minHeight: 80,
+    color: "#333333",
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
@@ -61,8 +68,30 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "1rem",
     },
   },
+  linkSecondary: {
+    margin: theme.spacing(2),
+    fontSize: ".975rem",
+    color: "#333333",
+    fontWeight: 500,
+    textDecoration: "none",
+    transition: ".3s",
+    "&:hover": {
+      color: "#0ec6d5",
+      fontSize: "1rem",
+    },
+  },
   titleLink: {
     color: "#ffffff",
+    fontWeight: 500,
+    fontSize: "28px",
+    textDecoration: "none",
+    transition: ".3s",
+    "&:hover": {
+      color: "#0ec6d5",
+    },
+  },
+  titleLinkSecondary: {
+    color: "#333333",
     fontWeight: 500,
     fontSize: "28px",
     textDecoration: "none",
@@ -83,13 +112,19 @@ const Navbar = () => {
   return (
     <>
       <AppBar
-        position="absolute"
+        position={router.pathname === "/" ? "absolute" : "static"}
         color="transparent"
         elevation={0}
-        className={classes.root}
+        className={router.pathname === "/" ? "" : classes.root}
       >
         <Container maxWidth="lg">
-          <Toolbar className={classes.toolbarMain}>
+          <Toolbar
+            className={
+              router.pathname === "/"
+                ? classes.toolbarMain
+                : classes.toolbarSecondary
+            }
+          >
             <div className={classes.toolbarLeft}>
               <IconButton
                 edge="start"
@@ -104,34 +139,82 @@ const Navbar = () => {
               </IconButton>
               <Typography variant="h6" className={classes.title}>
                 <Link href="/">
-                  <a className={classes.titleLink}>
+                  <a
+                    className={
+                      router.pathname === "/"
+                        ? classes.titleLink
+                        : classes.titleLinkSecondary
+                    }
+                  >
                     home <span className={classes.titleSpan}>ID</span>
                   </a>
                 </Link>
               </Typography>
               <nav>
                 <Link href="#">
-                  <a className={classes.link}>Home</a>
+                  <a
+                    className={
+                      router.pathname === "/"
+                        ? classes.link
+                        : classes.linkSecondary
+                    }
+                  >
+                    Home
+                  </a>
                 </Link>
                 <Link href="#">
-                  <a className={classes.link}>Properties</a>
+                  <a
+                    className={
+                      router.pathname === "/"
+                        ? classes.link
+                        : classes.linkSecondary
+                    }
+                  >
+                    Properties
+                  </a>
                 </Link>
                 <Link href="#">
-                  <a className={classes.link}>About</a>
+                  <a
+                    className={
+                      router.pathname === "/"
+                        ? classes.link
+                        : classes.linkSecondary
+                    }
+                  >
+                    About
+                  </a>
                 </Link>
               </nav>
             </div>
             <div className="toolbarRight">
               <Link href="#">
                 <a
-                  className={classes.link}
-                  style={{ borderRight: "1px solid #ffffff", paddingRight: 30 }}
+                  className={
+                    router.pathname === "/"
+                      ? classes.link
+                      : classes.linkSecondary
+                  }
+                  style={{
+                    borderRight:
+                      router.pathname === "/"
+                        ? "1px solid #ffffff"
+                        : "1px solid #333333",
+                    paddingRight: 30,
+                  }}
                 >
                   LOGIN
                 </a>
               </Link>
               <Link href="#">
-                <a className={classes.link}>REGISTER</a>
+                <a
+                  className={
+                    router.pathname === "/"
+                      ? classes.link
+                      : classes.linkSecondary
+                  }
+                >
+                  REGISTER
+                </a>
               </Link>
             </div>
           </Toolbar>
